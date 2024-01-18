@@ -1,42 +1,28 @@
 /* eslint-disable */
-export type Post = {
-  id: string
+export type Game = {
+  id: number
   title: string
-  content?: string | null | undefined
-  published: boolean
-  authorId: string
-  categories?: Category[] | undefined
+  genre: string
+  developer: string
+  gameInformation?: GameInformation | undefined
 }
 
-export type PostCreate = {
+export type GameInformation = {
+  id: number
+  description: string
+  releaseDate: string
+  rating?: number | null | undefined
+  platform: string
+}
+
+export type GameCreateInput = {
   title: string
-  content?: string | null | undefined
-  published: boolean
-  authorId: string
-  categories?: string[] | undefined
+  genre: string
+  developer: string
 }
 
-export type PostUpdate = {
-  title: string
-  content?: string | null | undefined
-  published: boolean
-  categories?: string[] | undefined
-}
-
-export type Comment = {
-  id: string
-  content: string
-  postId: string
-  authorId: string
-}
-
-export type CommentCreate = {
-  content: string
-  postId: string
-  authorId: string
-}
-
-export type Category = {
-  id: string
-  name: string
+export type GameUpdateInput = {
+  title?: string | undefined
+  genre?: string | undefined
+  developer?: string | undefined
 }
