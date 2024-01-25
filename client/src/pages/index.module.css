@@ -4,13 +4,13 @@
 }
 
 .postsList {
-  list-style-type: none;
   padding: 0;
+  list-style-type: none;
 }
 
 .postItem {
-  margin-bottom: 24px;
   padding: 16px;
+  margin-bottom: 24px;
   border: 1px solid #ddd;
   border-radius: 8px;
 }

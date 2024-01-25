@@ -1,10 +1,10 @@
+import type { TaskModel } from '$/api/@types/models';
 import { useAtom } from 'jotai';
 import { useEffect, useState } from 'react';
 import { BasicHeader } from 'src/pages/@components/BasicHeader/BasicHeader';
 import { apiClient } from 'src/utils/apiClient';
 import { userAtom } from '../../atoms/user';
 import styles from './tasks.module.css';
-import type { TaskModel } from '$/api/@types/models';
 
 const TasksPage = () => {
   const [user] = useAtom(userAtom);
