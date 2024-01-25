@@ -4,10 +4,11 @@ import { BasicHeader } from 'src/pages/@components/BasicHeader/BasicHeader';
 import { apiClient } from 'src/utils/apiClient';
 import { userAtom } from '../../atoms/user';
 import styles from './tasks.module.css';
+import type { TaskModel } from '$/api/@types/models';
 
 const TasksPage = () => {
   const [user] = useAtom(userAtom);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<TaskModel[]>([]);
 
   const fetchTasks = async () => {
     const tasks = await apiClient.private.tasks.$get().catch((e: unknown) => {
