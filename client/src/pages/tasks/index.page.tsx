@@ -10,7 +10,7 @@ const TasksPage = () => {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
-    const tasks = await apiClient.private.tasks.$get().catch((e) => {
+    const tasks = await apiClient.private.tasks.$get().catch((e: unknown) => {
       console.error(e);
       return [];
     });
