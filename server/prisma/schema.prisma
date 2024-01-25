@@ -8,27 +8,56 @@ generator client {
 }
 
 model User {
-  id    String @id @default(uuid())
-  email String @unique
-  name  String
-  games Game[]
+  id       String    @id @default(uuid())
+  email    String    @unique
+  name     String
+  reviews  Review[]
+  posts    Post[]
+  comments Comment[]
 }
 
 model Game {
-  id              Int              @id @default(autoincrement())
-  title           String
-  genre           String
-  developer       String
-  gameInformation GameInformation?
-  users           User[]
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  reviews     Review[]
+  posts       Post[]
 }
 
-model GameInformation {
-  id          Int      @id @default(autoincrement())
-  description String
-  releaseDate DateTime
-  rating      Int?
-  platform    String
-  gameId      Int      @unique
-  game        Game     @relation(fields: [gameId], references: [id])
+model Review {
+  id      Int    @id @default(autoincrement())
+  content String
+  rating  Int
+  gameId  Int
+  userId  String
+  game    Game   @relation(fields: [gameId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
+}
+
+model Post {
+  id       Int       @id @default(autoincrement())
+  title    String
+  content  String
+  gameId   Int?
+  userId   String
+  game     Game?     @relation(fields: [gameId], references: [id])
+  user     User      @relation(fields: [userId], references: [id])
+  comments Comment[]
+}
+
+model Comment {
+  id      Int    @id @default(autoincrement())
+  content String
+  postId  Int
+  userId  String
+  post    Post   @relation(fields: [postId], references: [id])
+  user    User   @relation(fields: [userId], references: [id])
+}
+
+model NewsArticle {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
