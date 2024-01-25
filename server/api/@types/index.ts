@@ -2,27 +2,29 @@
 export type Game = {
   id: number
   title: string
-  genre: string
-  developer: string
-  gameInformation?: GameInformation | undefined
+  description?: string | null | undefined
 }
 
-export type GameInformation = {
+export type Review = {
   id: number
-  description: string
-  releaseDate: string
-  rating?: number | null | undefined
-  platform: string
+  content: string
+  rating: number
+  gameId: number
+  userId: string
 }
 
-export type GameCreateInput = {
+export type Post = {
+  id: number
   title: string
-  genre: string
-  developer: string
+  content: string
+  gameId?: number | null | undefined
+  userId: string
 }
 
-export type GameUpdateInput = {
-  title?: string | undefined
-  genre?: string | undefined
-  developer?: string | undefined
+export type NewsArticle = {
+  id: number
+  title: string
+  content: string
+  createdAt: string
+  updatedAt: string
 }
