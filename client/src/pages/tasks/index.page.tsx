@@ -2,10 +2,10 @@ import { useAtom } from 'jotai';
 import { useEffect, useState } from 'react';
 import { BasicHeader } from 'src/pages/@components/BasicHeader/BasicHeader';
 import { apiClient } from 'src/utils/apiClient';
-import { userAtom } from '../atoms/user';
-import styles from './index.module.css';
+import { userAtom } from '../../atoms/user';
+import styles from './tasks.module.css';
 
-const Home = () => {
+const TasksPage = () => {
   const [user] = useAtom(userAtom);
   const [tasks, setTasks] = useState([]);
 
@@ -28,9 +28,10 @@ const Home = () => {
     <>
       <BasicHeader user={user} />
       <div className={styles.container}>
-        <ul className={styles.postsList}>
+        <h1>Tasks</h1>
+        <ul className={styles.tasksList}>
           {tasks.map((task) => (
-            <li key={task.id} className={styles.postItem}>
+            <li key={task.id} className={styles.taskItem}>
               <h2>{task.label}</h2>
               <p>{task.done ? 'Completed' : 'Pending'}</p>
             </li>
@@ -41,4 +42,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default TasksPage;
