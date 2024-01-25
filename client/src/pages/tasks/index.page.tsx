@@ -11,7 +11,7 @@ const TasksPage = () => {
   const [tasks, setTasks] = useState<TaskModel[]>([]);
 
   const fetchTasks = async () => {
-    const tasks = await apiClient.private.tasks.$get({}).catch((e: unknown) => {
+    const tasks = await apiClient.public.tasks.$get().catch((e: unknown) => {
       console.error(e);
       return [];
     });
